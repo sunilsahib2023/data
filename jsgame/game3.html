@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  body {
+  
+    margin: 0;
+    padding: 0;
+    cursor: url(images/net3.png),auto;
+  
+  }
+
+  .insect {
+    width:  60px;
+    height: 60px;
+    top: 0px;
+    left: 0px;
+    transition: 1.50s;
+    transform: origin="50% 50%"
+    transition: 1.50s;
+    opacity: 1;
+    position: relative;
+      
+    display: block;
+    //background:red;
+    text-align: center;
+    cursor: url(images/net3.png),auto;
+  }
+
+
+  #myscore {
+    color: rgb(223, 11, 198);
+    font-size: 20px;
+    font-family: arial black;
+  }
+
+  #logo {}
+
+  .mylogo {
+    font-size: 20px;
+    width: 22px;
+    height: autox;
+    transform: origin="50% 50%"
+      color:red;
+    font-family: arial black;
+    transition: 1.50s;
+    opacity: 1;
+    position: relative;
+    top: 200px;
+    left: 30%;
+    display: block;
+    //background:red;
+    text-align: center;
+
+    cursor: url(images/net2.png),auto;
+  }
+</style>
+
+<body onLoad="ani()">
+
+  <audio id="sound1" autoplay>
+    <source src="sound/m1.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+  </audio> 
+
+  <audio   id="sound2" >
+    <source src="sound/kill.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+  </audio> 
+
+  <audio   id="sound3" >
+    <source src="sound/kill2.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+  </audio> 
+
+
+  <img  id="blood" src="images/blood.png" style="width:6%;display:none;" >
+  <div id="myscore">Score : </div>
+  <h1 id="logo" style="display:none">TATA PRODUCT WELCOME TO MY WEBSITE</h1>
+
+
+  <script>
+
+    var d = document.getElementById("logo")
+    var sm = document.getElementById("myscore")
+    var blood = document.getElementById("blood")
+    var sound1 = document.getElementById("sound1")
+    var sound2 = document.getElementById("sound2")
+    var sound3 = document.getElementById("sound3")
+ 
+    sound1.play()
+    var mos = ["images/m1.gif"]
+    var ms = new Array()
+
+    var c = d.innerHTML.split("")
+    var cl = c.length
+    var n = new Array(c.length)
+
+    // Creating Mosqueto iamges in array
+
+    for (var i = 0; i <20; i++) {
+      ms[i] = document.createElement("img")
+      ms[i].className = "insect"
+      ms[i].src = mos[0]
+      ms[i].style.position = "relative"
+      document.body.appendChild(ms[i])
+      ms[i].style.top = Math.round(Math.random() * 10) + "px"
+      ms[i].style.left = Math.round(Math.random() * window.innerWidth) + "px"
+      
+         //     **************  Hover   ***************
+
+         ms[i].onmouseover=function()
+          {
+            ms[i].style.cursor ="url(images/net2.png),auto"
+            
+          }
+
+      ms[i].onclick=function()
+      {
+           var t = this
+     
+     // document.body.removeChild(this)
+       this.src="images/blood.png"
+       sound1.play()
+       sound2.play()
+       sound3.play()
+
+         
+        setTimeout(function()
+         {
+         
+          t.style.transform="scale(10)"
+                  
+           t.style.opacity="0"
+
+          //document.body.removeChild(t)
+
+         },1000  )
+
+
+       score++
+       sm.innerText = "Score : " + score
+     }
+     
+    }
+ 
+    //****************************************************************
+   
+
+
+    var a;
+    var t = 0
+    var i = 0
+    var L = 0;
+    var score = 0
+    var tt, LL, ss = 0;
+    var ii = 0
+
+    function ani2()
+      {
+     
+      //tt = Math.round(Math.random() * window.innerHeight - 110)
+      //LL = Math.round(Math.random() * window.innerWidth - 10)
+       if (ii>=20)
+           {
+             ii = 0
+            document.title =ii
+
+            }
+            else {
+        ii++
+         
+       ms[ii].style.left = Math.round(Math.random()*1700)+"px"
+        ms[ii].style.top = Math.round(Math.random()*-140)+"px"
+        document.title = ii
+      }
+
+
+    }
+    setInterval("ani2()", 100)
+
+
+
+
+    // document.title="No Error"
+
+  </script>
+
+
+
+
+</body>
+
+</html>

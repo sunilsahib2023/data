@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  body {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+  }
+
+  .insect {
+    width:  70px;
+    height: 70px;
+    top: 0px;
+    left: 0px;
+    transition: 1.50s;
+    transform: origin="50% 50%"
+    transition: 1.50s;
+    opacity: 1;
+    position: relative;
+    
+    display: block;
+    //background:red;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #myscore {
+    color: rgb(223, 11, 198);
+    font-size: 20px;
+    font-family: arial black;
+  }
+
+  #logo {}
+
+  .mylogo {
+    font-size: 20px;
+    width: 22px;
+    height: autox;
+    transform: origin="50% 50%"
+      color:red;
+    font-family: arial black;
+    transition: 1.50s;
+    opacity: 1;
+    position: relative;
+    top: 200px;
+    left: 30%;
+    display: block;
+    //background:red;
+    text-align: center;
+    cursor: pointer;
+  }
+</style>
+
+<body onLoad="ani()">
+  <div id="myscore">Score : </div>
+  <h1 id="logo" style="display:none">TATA PRODUCT WELCOME TO MY WEBSITE</h1>
+
+
+  <script>
+
+    var d = document.getElementById("logo")
+    var sm = document.getElementById("myscore")
+ 
+    var mos = ["images/m1.gif"]
+    var ms = new Array()
+
+    var c = d.innerHTML.split("")
+    var cl = c.length
+    var n = new Array(c.length)
+
+    // Creating Mosqueto iamges in array
+
+    for (var i = 0; i < 20; i++) {
+      ms[i] = document.createElement("img")
+      ms[i].className = "insect"
+      ms[i].src = mos[0]
+      ms[i].style.position = "relative"
+      document.body.appendChild(ms[i])
+      ms[i].style.top = Math.round(Math.random() * 300) + "px"
+      ms[i].style.left = Math.round(Math.random() * window.innerWidth) + "px"
+      ms[i].onclick=function()
+     {
+       document.body.removeChild(this)
+       score++
+       sm.innerText = "Score : " + score
+     }
+     
+    }
+ 
+    //****************************************************************
+
+
+    for (var i = 0; i < c.length; i++) {
+      n[i] = document.createElement("span")
+      n[i].innerHTML = c[i]
+      n[i].style.position = "relative"
+      document.body.appendChild(n[i])
+      n[i].className = "mylogo"
+      n[i].style.top = Math.round(Math.random() * 300) + "px"
+      n[i].style.left = Math.round(Math.random() * window.innerWidth) + "px"
+
+    }
+
+
+    var a;
+    var t = 0
+    var i = 0
+    var L = 0;
+    var score = 0
+
+    function ani() {
+      //document.title = Math.random()
+
+      if (i >= cl - 1) {
+        i = 0
+        //document.title = i
+      }
+      else {
+        i++
+        //document.title = i
+
+      }
+
+
+
+      t = Math.round(Math.random() * window.innerHeight - 110)
+      L = Math.round(Math.random() * window.innerWidth - 10)
+
+      n[i].style.left = L + "px"
+      n[i].style.top = t - 100 + "px"
+
+
+      rr = Math.round(Math.random() * 255)
+      gg = Math.round(Math.random() * 255)
+      bb = Math.round(Math.random() * 255)
+
+      n[i].style.color = `rgb(${rr},${gg},${bb})`
+      aa = Math.round(Math.random() * 360)
+      ss = Math.round(Math.random() * 5)
+      //n[i].style.transform="rotate("+aa+"deg) scale("+ss+")"
+      n[i].style.transform = "scale(" + ss + ")"
+
+      //document.title = t
+      n[i].onclick = function ()
+       {
+        //alert(this.innerHTML)
+        document.body.removeChild(this)
+        score++
+      document.title = "Your score = "+score;
+
+        sm.innerText = "Score : " + score
+
+
+      }
+
+
+      setTimeout("ani()",50)
+
+    }
+
+
+
+
+    var tt, LL, ss = 0;
+    var ii = 0
+
+    function ani2()
+      {
+     
+      tt = Math.round(Math.random() * window.innerHeight - 110)
+      LL = Math.round(Math.random() * window.innerWidth - 10)
+       if (ii >= 20)
+           {
+             ii = 0
+            document.title =ii
+
+            }
+            else {
+        ii++
+        ms[ii].style.left = Math.round(Math.random()*740)+"px"
+        ms[ii].style.top = Math.round(Math.random()*740)+"px"
+
+
+        document.title = ii
+      }
+
+      tt = Math.round(Math.random() * window.innerHeight - 110)
+      LL = Math.round(Math.random() * window.innerWidth - 10)
+      ss = Math.round(Math.random()*423);
+      document.title = ss
+
+
+      
+
+      ms[ii] = Math.round(Math.random() * 360)
+      ms[ii] = Math.round(Math.random() * 5)
+
+
+   
+
+      // hit event in ani2 
+
+     
+     
+    }
+    setInterval("ani2()", 10)
+
+
+
+
+    // document.title="No Error"
+
+  </script>
+
+
+
+
+</body>
+
+</html>
